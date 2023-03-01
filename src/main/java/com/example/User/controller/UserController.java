@@ -1,6 +1,7 @@
 package com.example.User.controller;
 
 import com.example.User.dto.UserDto;
+import com.example.User.exception.UserNOtFoundException;
 import com.example.User.service.UserService;
 import com.example.User.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class UserController {
 
     }
     @GetMapping("/{id}")
-    public ResponseEntity<User>getUser(@PathVariable int id){
+    public ResponseEntity<User>getUser(@PathVariable int id) throws UserNOtFoundException {
     return ResponseEntity.ok(userService.getUser(id));
     }
 

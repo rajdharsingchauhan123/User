@@ -1,5 +1,6 @@
 package com.example.User.advise;
 
+import com.example.User.exception.UserNOtFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,5 +20,14 @@ public class UserAdvise {
         return errors;
 
     }
-}
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(UserNOtFoundException.class)
+    public Map<String, String> handleBussinessExption( UserNOtFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("error massage",ex.getMessage());
+        return errors;
+    }
+
+
+    }
 
