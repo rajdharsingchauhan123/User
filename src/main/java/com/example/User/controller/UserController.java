@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -28,11 +29,11 @@ public class UserController {
 
     }
     @GetMapping("/{id}")
-    public ResponseEntity<User>getUser(@PathVariable int id) throws UserNOtFoundException {
+    public ResponseEntity<User>getUser(@PathVariable int id) {
     return ResponseEntity.ok(userService.getUser(id));
     }
 
-    @DeleteMapping("/delete/{user}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable User user){
     userService.deleteUser(user);
     return new ResponseEntity<>("Successfully deleted by user id",HttpStatus.OK);

@@ -23,4 +23,6 @@ public class User {
     private String gender;
     private int age;
     private String nationality;
+
+
 }
